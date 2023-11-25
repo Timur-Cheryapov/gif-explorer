@@ -36,7 +36,7 @@ Android Studio, Jetpack Compose, Dagger Hilt, Paging 3, Glide, OkHttpClient, Ret
 Architecture: MVVM
 
 ## Known issues
-- Sometiems the animation during the swipe will freeze. The investigation is being conducted.
+- Sometiems the animation during the swipe will freeze before the previous animation has finished. The investigation is being conducted.
 - Sometimes the name of the first GIF on the launch will be wrong. But after the swipe everything is alright.
 
 Features that might look like bugs:
