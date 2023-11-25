@@ -9,6 +9,7 @@ import android.util.Log
 import com.byticher.gif.R
 import com.byticher.gif.const.ConstValues
 import com.byticher.gif.domain.Gif
+import kotlinx.coroutines.CancellationException
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.io.File
@@ -25,6 +26,7 @@ class GifDownloaderImpl (
         val type = Environment.DIRECTORY_PICTURES
         val target = Environment.getExternalStoragePublicDirectory(type)
         val file = File(target, fileName)
+        var downloadCompleted = false
 
         if (!file.exists()) {
             try {
@@ -36,22 +38,28 @@ class GifDownloaderImpl (
                     }
                 }
                 Log.d("GifDownloader", "Successfully downloaded $fileName")
+                downloadCompleted = true
+            } catch (e: CancellationException) {
+                Log.d("GifDownloader", "Download cancelled")
+                throw e
             } catch (e: Exception) {
                 Log.d("GifDownloader", "Downloading $fileName failed due to ${e.message}")
                 return false
             }
         }
 
-        MediaScannerConnection.scanFile(
-            context,
-            arrayOf(file.path),
-            arrayOf(ConstValues.GIF_TYPE)
-        ) { path, uri ->
-            Log.d("MediaScanner", "newGif: $path || $uri")
-            if (uri != null) {
-                shareGif(uri, gif)
-            } else {
-                Log.d("MediaScanner", "MediaScanner returned null Uri")
+        if (downloadCompleted) {
+            MediaScannerConnection.scanFile(
+                context,
+                arrayOf(file.path),
+                arrayOf(ConstValues.GIF_TYPE)
+            ) { path, uri ->
+                Log.d("MediaScanner", "newGif: $path || $uri")
+                if (uri != null) {
+                    shareGif(uri, gif)
+                } else {
+                    Log.d("MediaScanner", "MediaScanner returned null Uri")
+                }
             }
         }
 
