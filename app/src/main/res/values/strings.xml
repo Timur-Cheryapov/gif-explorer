@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name" translatable="false">GIF</string>
+    <string name="disliked_gifs">Disliked Gifs</string>
+    <string name="favourite_gifs">Favourite Gifs</string>
+    <string name="there_are_no_gifs">There are no gifs</string>
+    <string name="disliked_section_button">Disliked section</string>
+    <string name="favourite_section_button">Favourite section</string>
+    <string name="share_gif">Share GIF</string>
+</resources>
