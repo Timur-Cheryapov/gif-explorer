@@ -43,6 +43,7 @@ Features that might look like bugs:
 
 Due to simplicity of the app no liked or disliked GIFs are saved. The selection is saved only when the app is running.
 Loading GIFs is not optimised, therefore with the low quality of the internet connection it takes more time to fully load GIFs.
+Seen GIFs are not memorized.
 
 ## Authors
 
