@@ -26,7 +26,6 @@ class GifDownloaderImpl (
         val type = Environment.DIRECTORY_PICTURES
         val target = Environment.getExternalStoragePublicDirectory(type)
         val file = File(target, fileName)
-        var downloadCompleted = false
 
         if (!file.exists()) {
             try {
@@ -38,7 +37,6 @@ class GifDownloaderImpl (
                     }
                 }
                 Log.d("GifDownloader", "Successfully downloaded $fileName")
-                downloadCompleted = true
             } catch (e: CancellationException) {
                 Log.d("GifDownloader", "Download cancelled")
                 throw e
@@ -48,18 +46,16 @@ class GifDownloaderImpl (
             }
         }
 
-        if (downloadCompleted) {
-            MediaScannerConnection.scanFile(
-                context,
-                arrayOf(file.path),
-                arrayOf(ConstValues.GIF_TYPE)
-            ) { path, uri ->
-                Log.d("MediaScanner", "newGif: $path || $uri")
-                if (uri != null) {
-                    shareGif(uri, gif)
-                } else {
-                    Log.d("MediaScanner", "MediaScanner returned null Uri")
-                }
+        MediaScannerConnection.scanFile(
+            context,
+            arrayOf(file.path),
+            arrayOf(ConstValues.GIF_TYPE)
+        ) { path, uri ->
+            Log.d("MediaScanner", "newGif: $path || $uri")
+            if (uri != null) {
+                shareGif(uri, gif)
+            } else {
+                Log.d("MediaScanner", "MediaScanner returned null Uri")
             }
         }
 
