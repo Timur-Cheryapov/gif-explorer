@@ -19,7 +19,7 @@ You can easily swipe liked or disliked GIFs to sort them into different categori
 
 This app was made as a training project.
 
-![Preview](Preview.webm)
+https://github.com/Timur-Cheryapov/gif-explorer/assets/133137198/e7a2ddad-8cbf-4894-90ab-f4ed85ec8cba
 
 ## Features
 
