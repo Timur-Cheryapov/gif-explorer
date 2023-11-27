@@ -17,7 +17,7 @@
 GIF is an experimental app for exploring most popular GIFs at the moment.
 You can easily swipe liked or disliked GIFs to sort them into different categories like in Tinder app!
 
-This app was made as a training project.
+This app was made as a training project. The main focus was to create smooth animations of the stack of GIFs.
 
 https://github.com/Timur-Cheryapov/gif-explorer/assets/133137198/e7a2ddad-8cbf-4894-90ab-f4ed85ec8cba
 
@@ -31,7 +31,7 @@ https://github.com/Timur-Cheryapov/gif-explorer/assets/133137198/e7a2ddad-8cbf-4
 
 ## Built With
 
-Android Studio, Jetpack Compose, Dagger Hilt, Paging 3, Glide, OkHttpClient, Retrofit, Room Database, View Model, Kotlin language
+Android Studio, Jetpack Compose, Dagger Hilt, Paging 3, Glide, OkHttp, Retrofit, Room, View Model, Kotlin, Espresso, JUnit
 
 Architecture: MVVM
 
